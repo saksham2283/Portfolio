@@ -152,11 +152,12 @@ section.visible {
 }
 
 #experience h2 {
-    color: black
+    color: var(--accent-color);
 }
 
 #experience p {
     font-size: 1.2rem;
+    color: black;
 }
 
 /* Contact Section */

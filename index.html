@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saksham Upadhyay | Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Saksham Upadhyay</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero text-center text-white bg-primary">
+        <div class="container">
+            <h1>Hi, I'm Saksham Upadhyay</h1>
+            <p class="lead">Aspiring Software Engineer | Java Developer | Web Developer</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <img src="images/profile.jpg" class="img-fluid" alt="Profile Image" id="profile-pic">
+            </div>
+            <div class="col-md-6">
+                <h2>About Me</h2>
+                <p>I'm currently pursuing a B.E. in Information Science Engineering from JSS Academy of Technical Education, Bengaluru, with a CGPA of 8.88. I have hands-on experience in Java programming, full-stack development, and problem-solving.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Skills</h2>
+            <ul class="list-unstyled text-center">
+                <li>Java, C, Python</li>
+                <li>HTML, CSS, JavaScript</li>
+                <li>Django, Spring Boot</li>
+                <li>Data Structures & Algorithms</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="container py-5">
+        <h2 class="text-center">Projects</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h3>Django Blog Website</h3>
+                <p>Developed a Django-based blog application featuring user authentication, blog creation, and commenting. <a href="https://github.com/saksham2283/Blog" target="_blank">View on GitHub</a></p>
+            </div>
+            <div class="col-md-6">
+                <h3>Java Applications</h3>
+                <p>Created a number guessing game and calculator using Java Swing during my internship at MotionCut. <a href="https://github.com/saksham2283/Internship-Project" target="_blank">View on GitHub</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="bg-light py-5">
+        <div class="container">
+            <h2 class="text-center">Experience</h2>
+            <p>During my internship at MotionCut, I worked on developing Java applications like a number guessing game and a calculator using Java Swing and AWT.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container py-5">
+        <h2 class="text-center">Contact Me</h2>
+        <p class="text-center">Feel free to reach out via email or connect with me on LinkedIn or GitHub!</p>
+        <div class="text-center">
+            <a href="mailto:saksham2233@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://www.linkedin.com/in/saksham-upadhyay" class="btn btn-secondary">LinkedIn</a>
+            <a href="https://github.com/saksham2283" class="btn btn-dark">GitHub</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 Saksham Upadhyay. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const profilePic = document.getElementById("profile-pic");
+            const sections = document.querySelectorAll("section");
+            const links = document.querySelectorAll(".nav-link");
+        
+            // Add event listener for click event on the profile picture
+            profilePic.addEventListener("click", function () {
+                // Toggle the active class to change the outline color
+                this.classList.toggle("active");
+            });
+        
+            // Function to reveal sections on scroll
+            const revealSection = (entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            };
+        
+            const sectionObserver = new IntersectionObserver(revealSection, {
+                root: null,
+                threshold: 0.15
+            });
+        
+            sections.forEach(section => {
+                sectionObserver.observe(section);
+            });
+        
+            // Smooth scroll on link click
+            links.forEach(link => {
+                link.addEventListener('click', function (e) {
+                    e.preventDefault(); // Prevent default anchor click behavior
+                    const targetId = this.getAttribute('href'); // Get the target section ID
+                    const targetSection = document.querySelector(targetId); // Find the section
+        
+                    // Smooth scroll to the section
+                    targetSection.scrollIntoView({ behavior: 'smooth' });
+        
+                    // Show the target section and trigger animations
+                    sections.forEach(section => {
+                        section.classList.remove('visible'); // Hide other sections
+                    });
+                    targetSection.classList.add('visible'); // Show the target section
+                });
+            });
+        
+            // Sticky Navbar
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        });
+        
+        
+    </script>
+</body>
+</html>
